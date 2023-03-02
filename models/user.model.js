@@ -34,7 +34,7 @@ UserSchema.pre('save',async function(){
 })
 
 UserSchema.methods.comparePassword = async function(passedPassword){
-    const match = await  compare(passedPassword,this.password)
+    const match = await compare(passedPassword,this.password)
     return match
 }
 
