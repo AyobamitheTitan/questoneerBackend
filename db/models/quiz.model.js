@@ -1,18 +1,34 @@
 import mongoose from 'mongoose'
 
-const QuizSchema = mongoose.Schema({
-    quiz:{
-        type:Array
+const QuizSchema = mongoose.Schema(
+  {
+    question: {
+      required: true,
+      type: String,
     },
-    score:{
-        type:Number,
-        required:false,
+    correctAnswer: {
+      required: true,
+      type: String,
     },
-    ownedBy:{
-        type:mongoose.Types.ObjectId,
-        ref:"User",
-        required:[true,"A user must be provided"]
-    }
-},{timestamps:true})
+    category: {
+      required: true,
+      type: String,
+    },
+    score: {
+      type: Number,
+      required: true,
+    },
+    difficulty:{
+        type:String,
+        required:true
+    },
+    ownedBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+      required: [true, "A user must be provided"],
+    },
+  },
+  { timestamps: true }
+);
 
 export default mongoose.model("Quiz",QuizSchema)
