@@ -1,5 +1,6 @@
 import express from 'express'
 import connect from './db/connect.js';
+import cors from 'cors'
 import {config} from 'dotenv'
 import router from './routes/userRoutes.js';
 import require_auth from './middleware/require_auth.js';
@@ -10,6 +11,7 @@ config()
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 app.use((req,res,next)=>{
     console.log(req.method,req.path);
